@@ -23,14 +23,14 @@
 
     <main id="main-doc">
         <section class="main-section" id="intro">
-            <header>Intro</header>
+            <header><h2>Intro</h2></header>
             <p>With the advent of mobile-first web development, many UI designs are beginning to include toggle buttons
                 and switches. Unfortunately, there are no pre-built CSS elements that implement toggle buttons. The good
                 news is we can use input checkboxes and radio buttons along with some styling to achieve the toggle
                 buttons we desire. Let's get started!</p>
         </section>
         <section class="main-section" id="checkbox_vs._radio">
-            <header>Checkbox vs. Radio</header>
+            <header><h2>Checkbox vs. Radio</h2></header>
             <p>When deciding what type of input type to use, either checkbox or radio, it is best to first decide what
                 will your toggle button would be used for. If your toggle button will be used as a simple on/off switch,
                 it is recommended to use a checkbox. If your toggle button will be used to be more specific options such
@@ -40,15 +40,82 @@
                 <li>
                     <p>HTML</p>
                     <code>
-                        <input type="checkbox" id="tos-accept" class="check-toggle">
+                        <xmp>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="tos-accept" class="check-toggle">
+                                <span class="slider"></span>
+                            </label>
+                        </xmp>
                     </code>
                 </li>
                 <li>
                     <p>CSS</p>
                     <code>
-                        .check-toggle {
-
-                        }
+                        <pre>
+                            .toggle-switch {
+                                position: relative;
+                                display: inline-block;
+                                /* width of toggle switch */
+                                width: 60px;
+                                /* height of toggle switch */
+                                height: 34px;
+                            }
+                            
+                            /* hides the actual checkbox but keeps it clickable */
+                            .toggle-switch input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+                            
+                            .slider {
+                                position: absolute;
+                                cursor: pointer;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                /* color of switch when unchecked */
+                                background-color: #ccc;
+                                /* adjusts how long the switch transitions*/
+                                transition: 0.4s;
+                                /* should match height of toggle switch above */
+                                border-radius: 34px;
+                            }
+                            
+                            .slider:before {
+                                position: absolute;
+                                content: "";
+                                /* height and width of internal button */
+                                height: 26px;
+                                width: 26px;
+                                /* left and bottom should match */
+                                /* displacement of internal button */
+                                left: 4px;
+                                bottom: 4px;
+                                /* color of inside of switch */
+                                background-color: white;
+                                /* should match transition time set above */
+                                transition: 0.4s;
+                                /* creates round button */
+                                border-radius: 50%;
+                            }
+                            
+                            input:checked + .slider {
+                                /* color of switch when checked */
+                                background-color: #2196f3;
+                            }
+                            
+                            input:focus + .slider {
+                                /* shadow that appears behind button */
+                                box-shadow: 0 0 1px #2196f3;
+                            }
+                            
+                            input:checked + .slider:before {
+                                /* distance traveled when button is clicked */
+                                transform: translateX(26px);
+                            }
+                        </pre>
                     </code>
                 </li>
             </ul>
@@ -70,16 +137,18 @@
                 </li>
         </section>
         <section class="main-section" id="examples">
-            <header>Examples</header>
-            
+            <header>
+                <h2>Examples</h2>
+            </header>
         </section>
         <section class="main-section" id="variations">
-            <header>Variations</header>
->
+            <header>
+                <h2>Variations</h2>
+            </header>
         </section>
         <section class="main-section" id="reference">
-            <header>Reference</header>
-            
+            <header><h2>Reference</h2></header>
+
         </section>
     </main>
 </body>
