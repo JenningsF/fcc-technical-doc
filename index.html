@@ -15,36 +15,160 @@
         <ul>
             <li><a class="nav-link" href="#intro">Intro</a></li>
             <li><a class="nav-link" href="#checkbox_vs._radio">Checkbox vs. Radio</a></li>
+            <li><a class="nav-link" href="#checkbox_toggle_switch">Checkbox Toggle Switch</a></li>
+            <li><a class="nav-link" href="#radio_toggle_switch">Radio Toggle Switch</a></li>
             <li><a class="nav-link" href="#examples">Examples</a></li>
-            <li><a class="nav-link" href="#variations">Variations</a></li>
-            <li><a class="nav-link" href="#reference">Reference</a></li>
         </ul>
     </nav>
 
     <main id="main-doc">
         <section class="main-section" id="intro">
-            <header><h2>Intro</h2></header>
+            <header>
+                <h2>Intro</h2>
+            </header>
             <p>With the advent of mobile-first web development, many UI designs are beginning to include toggle buttons
                 and switches. Unfortunately, there are no pre-built CSS elements that implement toggle buttons. The good
                 news is we can use input checkboxes and radio buttons along with some styling to achieve the toggle
                 buttons we desire. Let's get started!</p>
         </section>
         <section class="main-section" id="checkbox_vs._radio">
-            <header><h2>Checkbox vs. Radio</h2></header>
+            <header>
+                <h2>Checkbox vs. Radio</h2>
+            </header>
             <p>When deciding what type of input type to use, either checkbox or radio, it is best to first decide what
-                will your toggle button would be used for. If your toggle button will be used as a simple on/off switch,
-                it is recommended to use a checkbox. If your toggle button will be used to be more specific options such
-                as a light/dark theme toggle, it would be better to use radio buttons.</p>
+                will your toggle button would be used for. Here are some considerations:
             <ul>
-                <p>Checkbox Toggle Button</p>
+                <li>
+                    If your toggle button will be used as a simple binary on/off switch, a checkbox is recommended.
+                </li>
+                <li>
+                    If your toggle button will be used to be more specific options (i.e. light/dark theme toggle), a
+                    radio button is recommended.
+                </li>
+            </ul>
+            </p>
+        </section>
+        <section class="main-section" id="checkbox_toggle_switch">
+            <header>
+                <h2>Checkbox Toggle Switch</h2>
+            </header>
+            <p>The checkbox toggle switch typically does not include any inline labels and should either be
+                self-explanatory or accompanied by labels near the button itself</p>
+            <label class="checkbox-toggle-switch">
+                <input type="checkbox" class="check-toggle">
+                <span class="slider"></span>
+            </label>
+            <ul>
+                <li>
+                    <h3>HTML</h3>
+                    <p>The HTML is simply an <code>input</code> tag with the <code>checkbox</code> type and a
+                        <code>span</code> tag with corresponding classes for both the <code>input</code> and
+                        <code>span</code>
+                    </p>
+                    <code>
+                            <xmp>
+                                <label class="checkbox-toggle-switch">
+                                    <input type="checkbox" class="check-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </xmp>
+                        </code>
+                </li>
+                <li>
+                    <p>CSS</p>
+                    <code>
+                            <pre>
+                                .checkbox-toggle-switch {
+                                    position: relative;
+                                    display: inline-block;
+                                    /* width of toggle switch */
+                                    width: 60px;
+                                    /* height of toggle switch */
+                                    height: 34px;
+                                }
+                                
+                                /* hides the actual checkbox but keeps it clickable */
+                                .checkbox-toggle-switch input {
+                                    opacity: 0;
+                                    width: 0;
+                                    height: 0;
+                                }
+                                
+                                .slider {
+                                    position: absolute;
+                                    cursor: pointer;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    /* color of switch when unchecked */
+                                    background-color: #ccc;
+                                    /* adjusts how long the switch transitions*/
+                                    transition: 0.4s;
+                                    /* should match height of toggle switch above */
+                                    border-radius: 34px;
+                                }
+                                
+                                .slider:before {
+                                    position: absolute;
+                                    content: "";
+                                    /* height and width of internal button */
+                                    height: 26px;
+                                    width: 26px;
+                                    /* left and bottom should match */
+                                    /* displacement of internal button */
+                                    left: 4px;
+                                    bottom: 4px;
+                                    /* color of inside of switch */
+                                    background-color: white;
+                                    /* should match transition time set above */
+                                    transition: 0.4s;
+                                    /* creates round button */
+                                    border-radius: 50%;
+                                }
+                                
+                                input:checked + .slider {
+                                    /* color of switch when checked */
+                                    background-color: #2196f3;
+                                }
+                                
+                                input:focus + .slider {
+                                    /* shadow that appears behind button */
+                                    box-shadow: 0 0 1px #2196f3;
+                                }
+                                
+                                input:checked + .slider:before {
+                                    /* distance traveled when button is clicked */
+                                    transform: translateX(26px);
+                                }
+                            </pre>
+                        </code>
+                </li>
+            </ul>
+        </section>
+        <section class="main-section" id="radio_toggle_switch">
+            <header>
+                <h2>Radio Toggle Switch</h2>
+            </header>
+            <p>The radio toggle switch typically has labels build into them and does require additional labels near the
+                button itself</p>
+            <span class="toggle-switch">
+                <input type="radio" class="toggle" id="on" name="select" value="on" checked>
+                <label class="toggle-label" for="on">On</label>
+                <input type="radio" class="toggle" id="off" name="select" value="off">
+                <label class="toggle-label" for="off">Off</label>
+            </span>
+            <ul>
                 <li>
                     <p>HTML</p>
                     <code>
                         <xmp>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="tos-accept" class="check-toggle">
-                                <span class="slider"></span>
-                            </label>
+                            <span class="toggle-switch">
+                                <input type="radio" class="toggle" id="on" name="select" value="on" checked>
+                                <label class="toggle-label" for="on">On</label>
+                                <input type="radio" class="toggle" id="off" name="select" value="off">
+                                <label class="toggle-label" for="off">Off</label>
+                            </span>
                         </xmp>
                     </code>
                 </li>
@@ -52,87 +176,10 @@
                     <p>CSS</p>
                     <code>
                         <pre>
-                            .toggle-switch {
-                                position: relative;
-                                display: inline-block;
-                                /* width of toggle switch */
-                                width: 60px;
-                                /* height of toggle switch */
-                                height: 34px;
-                            }
-                            
-                            /* hides the actual checkbox but keeps it clickable */
-                            .toggle-switch input {
-                                opacity: 0;
-                                width: 0;
-                                height: 0;
-                            }
-                            
-                            .slider {
-                                position: absolute;
-                                cursor: pointer;
-                                top: 0;
-                                left: 0;
-                                right: 0;
-                                bottom: 0;
-                                /* color of switch when unchecked */
-                                background-color: #ccc;
-                                /* adjusts how long the switch transitions*/
-                                transition: 0.4s;
-                                /* should match height of toggle switch above */
-                                border-radius: 34px;
-                            }
-                            
-                            .slider:before {
-                                position: absolute;
-                                content: "";
-                                /* height and width of internal button */
-                                height: 26px;
-                                width: 26px;
-                                /* left and bottom should match */
-                                /* displacement of internal button */
-                                left: 4px;
-                                bottom: 4px;
-                                /* color of inside of switch */
-                                background-color: white;
-                                /* should match transition time set above */
-                                transition: 0.4s;
-                                /* creates round button */
-                                border-radius: 50%;
-                            }
-                            
-                            input:checked + .slider {
-                                /* color of switch when checked */
-                                background-color: #2196f3;
-                            }
-                            
-                            input:focus + .slider {
-                                /* shadow that appears behind button */
-                                box-shadow: 0 0 1px #2196f3;
-                            }
-                            
-                            input:checked + .slider:before {
-                                /* distance traveled when button is clicked */
-                                transform: translateX(26px);
+                            .radio-toggle {    
+                                
                             }
                         </pre>
-                    </code>
-                </li>
-            </ul>
-            <ul>
-                <p>Radio Toggle Button</p>
-                <li>
-                    <p>HTML</p>
-                    <code>
-                        <input type="radio" id="color-theme" class="radio-toggle">
-                    </code>
-                </li>
-                <li>
-                    <p>CSS</p>
-                    <code>
-                        .radio-toggle {
-
-                        }
                     </code>
                 </li>
         </section>
@@ -140,15 +187,43 @@
             <header>
                 <h2>Examples</h2>
             </header>
-        </section>
-        <section class="main-section" id="variations">
-            <header>
-                <h2>Variations</h2>
-            </header>
-        </section>
-        <section class="main-section" id="reference">
-            <header><h2>Reference</h2></header>
+            <p>Here are some additional examples of some pretty creative toggle buttons other devs have made.</p>
+            <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abwdpep"
+                data-user="fydsa"
+                style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/fydsa/pen/abwdpep">
+                        Toggle Switch</a> by Saba Alikhani (<a href="https://codepen.io/fydsa">@fydsa</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
+            <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="pogaXXa"
+                data-user="Anon_satyam"
+                style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/Anon_satyam/pen/pogaXXa">
+                        Day and Night Toggle Switch</a> by Satyam Singh (<a
+                        href="https://codepen.io/Anon_satyam">@Anon_satyam</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+            <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="JjjqEpj"
+                data-user="himalayasingh"
+                style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/himalayasingh/pen/JjjqEpj">
+                        Subscribe Toggle Button | Smudge The Cat (Woman Yelling At Cat Meme)</a> by Himalaya Singh (<a
+                        href="https://codepen.io/himalayasingh">@himalayasingh</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ZVMxQJ" data-user="lurx"
+                style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/lurx/pen/ZVMxQJ">
+                        (almost) pure css night/day toggle</a> by Lurx (<a href="https://codepen.io/lurx">@lurx</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         </section>
     </main>
 </body>
