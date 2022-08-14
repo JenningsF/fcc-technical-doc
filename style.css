@@ -1,16 +1,21 @@
 #navbar {
-  position: fixed;
-  height: 100%;
-  width: 250px;
+	position: fixed;
+	height: 100%;
+	width: 250px;
 }
 
 #main-doc {
-  margin-left: 220px;
-  padding: 0 1rem;
+	margin-left: 220px;
+	padding: 0 1rem;
 }
 
 @media (max-width: 768px) {
-
+	#navbar {
+		position: relative;
+	}
+	#main-doc {
+		margin-left: 0;
+	}
 }
 
 /*
@@ -18,134 +23,134 @@
  * at the top left of the screen
  */
 #menu {
-  position: absolute;
-  width: 300px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
+	position: absolute;
+	width: 300px;
+	margin: -100px 0 0 -50px;
+	padding: 50px;
+	padding-top: 125px;
 
-  background: #ededed;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
+	background: #ededed;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	/* to stop flickering of text in safari */
 
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
 
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
 /* Checkbox Toggle Button */
 .checkbox-toggle-switch {
-  position: relative;
-  display: inline-block;
-  /* width of toggle switch */
-  width: 60px;
-  /* height of toggle switch */
-  height: 34px;
+	position: relative;
+	display: inline-block;
+	/* width of toggle switch */
+	width: 60px;
+	/* height of toggle switch */
+	height: 34px;
 }
 
 /* hides the actual checkbox but keeps it clickable */
 .checkbox-toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* color of switch when unchecked */
-  background-color: #ccc;
-  /* adjusts how long the switch transitions*/
-  transition: 0.4s;
-  /* should match height of toggle switch above */
-  border-radius: 34px;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* color of switch when unchecked */
+	background-color: #ccc;
+	/* adjusts how long the switch transitions*/
+	transition: 0.4s;
+	/* should match height of toggle switch above */
+	border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  /* height and width of internal button */
-  height: 26px;
-  width: 26px;
-  /* left and bottom should match */
-  /* displacement of internal button */
-  left: 4px;
-  bottom: 4px;
-  /* color of inside of switch */
-  background-color: white;
-  /* should match transition time set above */
-  transition: 0.4s;
-  /* creates round button */
-  border-radius: 50%;
+	position: absolute;
+	content: "";
+	/* height and width of internal button */
+	height: 26px;
+	width: 26px;
+	/* left and bottom should match */
+	/* displacement of internal button */
+	left: 4px;
+	bottom: 4px;
+	/* color of inside of switch */
+	background-color: white;
+	/* should match transition time set above */
+	transition: 0.4s;
+	/* creates round button */
+	border-radius: 50%;
 }
 
-input[type=checkbox]:checked+.slider {
-  /* color of switch when checked */
-  background-color: #2196f3;
+input[type="checkbox"]:checked + .slider {
+	/* color of switch when checked */
+	background-color: #2196f3;
 }
 
-input[type=checkbox]:focus+.slider {
-  /* shadow that appears behind button */
-  box-shadow: 0 0 1px #2196f3;
+input[type="checkbox"]:focus + .slider {
+	/* shadow that appears behind button */
+	box-shadow: 0 0 1px #2196f3;
 }
 
-input[type=checkbox]:checked+.slider:before {
-  /* distance traveled when button is clicked */
-  transform: translateX(26px);
+input[type="checkbox"]:checked + .slider:before {
+	/* distance traveled when button is clicked */
+	transform: translateX(26px);
 }
 
 /* Radio Button Toggle */
 .radio-toggle-switch {
-  font-size: 0;
-  margin: 0 1rem;
+	font-size: 0;
+	margin: 0 1rem;
 }
 
 .radio-toggle {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
-  overflow: hidden;
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
 }
 
 .radio-toggle-label {
-  color: white;
-  background-color: #ccc;
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 9999px;
-  transition: all 0.17s ease-in-out;
+	color: white;
+	background-color: #ccc;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.5rem 1rem;
+	border: 1px solid #ccc;
+	border-radius: 9999px;
+	transition: all 0.17s ease-in-out;
 }
 
 .radio-toggle-label:hover {
-  cursor: pointer;
-  color: white;
+	cursor: pointer;
+	color: white;
 }
 
-.radio-toggle:checked+.radio-toggle-label {
-  color: white;
-  background-color: #2196f3;
+.radio-toggle:checked + .radio-toggle-label {
+	color: white;
+	background-color: #2196f3;
 }
 
 .radio-toggle-label:first-of-type {
-  border-radius: 9999px 0 0 9999px;
-  margin-right: 0rem;
+	border-radius: 9999px 0 0 9999px;
+	margin-right: 0rem;
 }
 
 .radio-toggle-label:last-of-type {
-  border-radius: 0 9999px 9999px 0;
-  margin-left: -2px;
+	border-radius: 0 9999px 9999px 0;
+	margin-left: -2px;
 }
